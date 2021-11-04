@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Services\ReportService;
-use App\User;
+use App\Models\User;
 use Illuminate\Http\Request;
 use LaravelDaily\LaravelCharts\Classes\LaravelChart;
 
@@ -16,6 +16,7 @@ class ReportsController extends Controller
                 $query->whereId(2);
             })
             ->get();
+
         $dateRange = $reportService->generateDateRange();
 
         $timeEntries = $reportService->generateReport($request->input('employee'));
@@ -25,7 +26,7 @@ class ReportsController extends Controller
                 'chart_title'           => 'Hours of work per day',
                 'chart_type'            => 'bar',
                 'report_type'           => 'group_by_date',
-                'model'                 => 'App\TimeEntry',
+                'model'                 => 'App\Models\TimeEntry',
                 'group_by_field_format' => 'Y-m-d H:i:s',
                 'group_by_field'        => 'time_start',
                 'group_by_period'       => 'day',

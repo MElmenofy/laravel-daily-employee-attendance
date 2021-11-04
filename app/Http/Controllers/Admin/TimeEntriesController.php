@@ -6,10 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\MassDestroyTimeEntryRequest;
 use App\Http\Requests\StoreTimeEntryRequest;
 use App\Http\Requests\UpdateTimeEntryRequest;
-use App\TimeEntry;
-use App\User;
+use App\Models\TimeEntry;
+use App\Models\User;
 use Gate;
-use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 class TimeEntriesController extends Controller
@@ -19,8 +18,7 @@ class TimeEntriesController extends Controller
         abort_if(Gate::denies('time_entry_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $timeEntries = TimeEntry::all();
-
-        return view('admin.timeEntries.index', compact('timeEntries'));
+        return view('admin.timeEntries.index', compact( 'timeEntries'));
     }
 
     public function create()

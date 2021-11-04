@@ -71,7 +71,7 @@ return [
         'fields'         => [
             'id'                => 'ID',
             'id_helper'         => '',
-            'user'              => 'User',
+            'user'              => 'Name',
             'user_helper'       => '',
             'time_start'        => 'Time Start',
             'time_start_helper' => '',

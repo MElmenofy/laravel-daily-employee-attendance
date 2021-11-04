@@ -1,6 +1,6 @@
 <?php
-
-use App\Role;
+namespace Database\Seeders;
+use App\Models\Role;
 use App\Services\ReportService;
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;

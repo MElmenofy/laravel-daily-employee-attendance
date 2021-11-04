@@ -1,4 +1,4 @@
-# Laravel 6 Employee Attendance Reports
+# Laravel 8 Employee Attendance Reports
 
 Demo-project showing how to use AJAX Requests with Sweet Alerts, and how to quickly draw a chart with our Laravel Charts package.
 

@@ -6,8 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\MassDestroyUserRequest;
 use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
-use App\Role;
-use App\User;
+use App\Models\Role;
+use App\Models\TimeEntry;
+use App\Models\User;
+use App\Services\ReportService;
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -83,4 +85,12 @@ class UsersController extends Controller
 
         return response(null, Response::HTTP_NO_CONTENT);
     }
+
+//    public function users_details(ReportService $reportService)
+//    {
+//        $dateRange = $reportService->generateDateRange();
+//        $timeEntries = TimeEntry::all();
+//        return view('admin.index', compact('timeEntries', 'dateRange'));
+//    }
+
 }

@@ -23,7 +23,7 @@
 
                         </th>
                         <th>
-                            {{ trans('cruds.timeEntry.fields.id') }}
+                            Num
                         </th>
                         <th>
                             {{ trans('cruds.timeEntry.fields.user') }}
@@ -34,19 +34,17 @@
                         <th>
                             {{ trans('cruds.timeEntry.fields.time_end') }}
                         </th>
-                        <th>
-                            &nbsp;
-                        </th>
+
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
+                @php $i= 1;@endphp
                     @foreach($timeEntries as $key => $timeEntry)
                         <tr data-entry-id="{{ $timeEntry->id }}">
+                            <td></td>
                             <td>
-
-                            </td>
-                            <td>
-                                {{ $timeEntry->id ?? '' }}
+                                {{ $i++ }}
                             </td>
                             <td>
                                 {{ $timeEntry->user->name ?? '' }}
@@ -57,6 +55,7 @@
                             <td>
                                 {{ $timeEntry->time_end ?? '' }}
                             </td>
+
                             <td>
                                 @can('time_entry_show')
                                     <a class="btn btn-xs btn-primary" href="{{ route('admin.time-entries.show', $timeEntry->id) }}">

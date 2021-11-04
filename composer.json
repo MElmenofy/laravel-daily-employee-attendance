@@ -13,6 +13,7 @@
         "doctrine/dbal": "^2.9",
         "fideloper/proxy": "^4.4",
         "laravel/framework": "^8.0",
+        "laravel/legacy-factories": "^1.1",
         "laravel/passport": "^10.0",
         "laravel/tinker": "^2.0",
         "laravel/ui": "^3.3",
@@ -21,7 +22,6 @@
     },
     "require-dev": {
         "facade/ignition": "^2.5",
-        "fzaninotto/faker": "^1.9.1",
         "mockery/mockery": "^1.4.2",
         "nunomaduro/collision": "^5.0",
         "phpunit/phpunit": "^9.3.3"
@@ -41,27 +41,29 @@
             "App\\": "app/"
         },
         "classmap": [
-            "database/seeds",
+            "database/seeders",
             "database/factories"
         ]
     },
     "autoload-dev": {
         "psr-4": {
-            "Tests\\": "tests/"
+            "App\\": "app/",
+            "Database\\Factories\\": "database/factories/",
+            "Database\\Seeders\\": "database/seeders/"
+        },
+        "minimum-stability": "dev",
+        "prefer-stable": true,
+        "scripts": {
+            "post-autoload-dump": [
+                "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+                "@php artisan package:discover --ansi"
+            ],
+            "post-root-package-install": [
+                "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+            ],
+            "post-create-project-cmd": [
+                "@php artisan key:generate --ansi"
+            ]
         }
-    },
-    "minimum-stability": "dev",
-    "prefer-stable": true,
-    "scripts": {
-        "post-autoload-dump": [
-            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
-            "@php artisan package:discover --ansi"
-        ],
-        "post-root-package-install": [
-            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
-        ],
-        "post-create-project-cmd": [
-            "@php artisan key:generate --ansi"
-        ]
     }
 }
